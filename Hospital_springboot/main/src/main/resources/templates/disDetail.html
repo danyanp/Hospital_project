@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/headercss :: common_header(~{::title},~{::link})">
+    <title>疾病详情</title>
+    <link rel="stylesheet" th:href="@{/dist/css/mycss.css}">
+</head>
+
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
+
+    <div th:replace="~{common/navbar::navbar}"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">疾病详情</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">主页</a></li>
+                            <li class="breadcrumb-item"><a href="http://www.xywy.com/">寻医问药</a></li>
+                            <li class="breadcrumb-item active">Top Navigation</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <!-- Main content -->
+                    <!-- Main content -->
+                    <section class="content">
+
+                        <!-- Default box -->
+                        <div class="card card-solid" th:each="disDetail:${disDetail}">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 col-sm-6">
+                                        <h3 class="my-3" th:text="${disDetail.diseaseName}">光感型药疹</h3>
+                                        <p th:text="${disDetail.diseaseDis}"></p>
+                                        <hr>
+
+
+                                    </div>
+
+
+                                    <div class="col-12 col-sm-6">
+
+                                        <div class="mt-4">
+                                            <div class="btn btn-primary btn-lg btn-flat">
+                                                <i class="fas fa-user-plus fa-lg mr-2"></i>
+                                                找医生
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-4 product-share">
+                                            <a href="#" class="text-gray">
+                                                <i class="fab fa-facebook-square fa-2x"></i>
+                                            </a>
+                                            <a href="#" class="text-gray">
+                                                <i class="fab fa-twitter-square fa-2x"></i>
+                                            </a>
+                                            <a href="#" class="text-gray">
+                                                <i class="fas fa-envelope-square fa-2x"></i>
+                                            </a>
+                                            <a href="#" class="text-gray">
+                                                <i class="fas fa-rss-square fa-2x"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="row mt-4">
+                                    <nav class="w-100">
+                                        <div class="nav nav-tabs" id="product-tab" role="tablist">
+                                            <a class="nav-item nav-link active" id="product-desc-tab"
+                                               data-toggle="tab" href="#product-desc" role="tab"
+                                               aria-controls="product-desc" aria-selected="true">描述</a>
+                                            <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab"
+                                               href="#product-comments" role="tab" aria-controls="product-comments"
+                                               aria-selected="false">症状</a>
+                                            <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab"
+                                               href="#product-rating" role="tab" aria-controls="product-rating"
+                                               aria-selected="false">原因</a>
+                                        </div>
+                                    </nav>
+                                    <div class="tab-content p-3" id="nav-tabContent">
+                                        <div class="tab-pane fade show active" id="product-desc" role="tabpanel"
+                                             aria-labelledby="product-desc-tab" th:text="${disDetail.diseaseDis}"></div>
+                                        <div class="tab-pane fade" id="product-comments" role="tabpanel"
+                                             aria-labelledby="product-comments-tab" th:text="${disDetail.symptom}">
+                                        </div>
+                                        <div class="tab-pane fade" id="product-rating" role="tabpanel"
+                                             aria-labelledby="product-rating-tab" th:text="${disDetail.cause}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+
+                    </section>
+                    <!-- Main content -->
+                </div>
+            </div><!-- /.container-fluid -->
+
+        </div>
+    </div>
+    <div th:replace="~{common/footer::copy}"></div>
+</div>
+<!-- ./wrapper -->
+
+
+<div th:replace="common/footjs::common_js(~{::script})">
+    <!--每个页面自己的js-->
+    <!--<script src="js/index.js"></script>-->
+</div>
+</body>
+
+</html>

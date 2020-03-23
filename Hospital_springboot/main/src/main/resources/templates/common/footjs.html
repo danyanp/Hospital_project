@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div th:fragment="common_js(scripts)">
+        <!-- jQuery -->
+        <script th:src="@{/jquery/jquery.min.js}"></script>
+        <!-- Bootstrap 4 -->
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+        <!-- AdminLTE App -->
+        <script th:src="@{/dist/js/adminlte.min.js}"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script th:src="@{/dist/js/demo.js}"></script>
+        <!--/* Per-page placeholder for additional js */-->
+        <!--<th:block th:replace="${scripts}" />-->
+    </div>
+</html>

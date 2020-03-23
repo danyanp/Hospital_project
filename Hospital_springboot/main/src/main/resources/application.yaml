@@ -1,0 +1,14 @@
+#端口
+server.port: 8081
+
+spring:
+  #连接数据库
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/doctor?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #thymeleaf模板引擎
+  thymeleaf:
+    cache: false
+ # principal.authorities

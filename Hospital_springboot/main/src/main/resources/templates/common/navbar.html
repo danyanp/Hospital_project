@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<div th:fragment="navbar">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <img th:src="@{/dist/img/AdminLTELogo.png}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                     style="opacity: .8">
+                <span class="brand-text font-weight-light">找我看病</span>
+            </a>
+
+            <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a th:href="@{/}" class="nav-link">主页</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">看病</a>
+                        <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                            <li><a href="#" class="dropdown-item">疾病自查</a></li>
+                            <li><a href="#" class="dropdown-item">在线医疗</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- SEARCH FORM -->
+                <form class="form-inline ml-0 ml-md-3">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right navbar links -->
+            <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/register}" sec:authorize="!isAuthenticated()">
+                        注册
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}" sec:authorize="!isAuthenticated()">
+                        登录
+                    </a>
+                </li>
+
+                <div class="navbar-custom-menu" sec:authorize="isAuthenticated()">
+                    <ul class="nav navbar-nav">
+
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img th:src="@{/dist/img/user1-128x128.jpg}" class="user-image" alt="User Image" style="margin-top:0px;">
+                                <span class="hidden-xs"><label sec:authentication="name"></label></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- Widget: user widget style 1 -->
+                                <div class="card card-widget widget-user" style="margin-bottom: 0px;">
+                                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                                    <div class="widget-user-header bg-info">
+                                        <h3 class="widget-user-username">Alexander Pierce</h3>
+                                        <h5 class="widget-user-desc">Founder &amp; CEO</h5>
+                                    </div>
+                                    <div class="widget-user-image">
+                                        <img class="img-circle elevation-2" th:src="@{/dist/img/user1-128x128.jpg}" alt="User Avatar">
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col-sm-4 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header"></h5>
+                                                    <!--<p>登录名：<span th:text="${#authentication.principal.id}"></span></p>-->
+                                                    <a th:href="@{/user/info/{id}(id=${#authentication.principal.id})}">病历</a>
+                                                    <!--th:href="@{/disDetail/{id}(id=${rand.diseaseID})}"-->
+                                                            <!--<a type="button" value="病历" class="btn btn-default btn-flat"-->
+                                                               <!--style="outline: none;border: none;list-style: none"></a>-->
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header"></h5>
+                                                    <form action="/login" method="post">
+                                                        <div class="description-text">
+                                                            <input type="submit" value="修改密码" class="btn btn-default btn-flat"
+                                                                   style="outline: none;border: none;list-style: none">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4">
+                                                <div class="description-block">
+                                                    <h5 class="description-header"></h5>
+                                                    <form action="/login" method="post">
+                                                        <div class="description-text">
+                                                            <input type="submit" value="退出" class="btn btn-default btn-flat"
+                                                                   style="outline: none;border: none;list-style: none">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        <!-- /.row -->
+                                    </div>
+                                </div>
+                                <!--&lt;!&ndash; User image &ndash;&gt;-->
+                                <!--<li class="user-header"><img-->
+                                        <!--src="dist/img/user1-128x128.jpg"-->
+                                        <!--class="img-circle" alt="User Image"></li>-->
+
+                                <!--&lt;!&ndash; Menu Footer&ndash;&gt;-->
+                                <!--<li class="user-footer">-->
+                                    <!--<div class="pull-left">-->
+                                        <!--<a href="#" class="btn btn-default btn-flat">修改密码</a>-->
+                                    <!--</div>-->
+
+                                <!--</li>-->
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+    </nav>
+    <!-- /.navbar -->
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.dropright:hover>.dropdown-menu{
+    display: block;
+    position: absolute;
+    transform: translate3d(150px, -5px, 0px);
+    top: 0px;
+    left: 118px;
+    will-change: transform;
+}
+.dropright>.dropdown-toggle:active {
+    pointer-events: none;
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/headercss :: common_header(~{::title},~{::link})">
+    <title>用户信息</title>
+    <link rel="stylesheet" th:href="@{/dist/css/mycss.css}">
+</head>
+
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
+    <!--nav-->
+    <div th:replace="~{common/navbar::navbar}"></div>
+    <!--nav-->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <!-- Main content -->
+                    <!-- Main content -->
+                    <!-- Main content -->
+                    <section class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-3" style="margin-top: 25px;">
+
+                                    <!-- Profile Image -->
+                                    <div class="card card-primary card-outline">
+                                        <div class="card-body box-profile">
+                                            <div class="text-center">
+                                                <img class="profile-user-img img-fluid img-circle"
+                                                     th:src="@{/dist/img/user4-128x128.jpg}"
+                                                     alt="User profile picture">
+                                            </div>
+
+                                            <h3 class="profile-username text-center" th:text="${userInfo.username}"></h3>
+
+                                            <p class="text-muted text-center" th:each="role:${userInfo.roles}" th:text="${role.roleDesc}"></p>
+
+                                            <ul class="list-group list-group-unbordered mb-3">
+                                                <li class="list-group-item">
+                                                    <b>Followers</b> <a class="float-right">1,322</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>Following</b> <a class="float-right">543</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>Friends</b> <a class="float-right">13,287</a>
+                                                </li>
+                                            </ul>
+
+                                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+
+                                    <!-- About Me Box -->
+                                    <div class="card card-primary">
+                                        <div class="card-header">
+                                            <h3 class="card-title">About Me</h3>
+                                        </div>
+                                        <!-- /.card-header -->
+                                        <div class="card-body">
+                                            <strong><i class="fas fa-book mr-1"></i> Education</strong>
+
+                                            <p class="text-muted">
+                                                B.S. in Computer Science from the University of Tennessee at
+                                                Knoxville
+                                            </p>
+
+                                            <hr>
+
+                                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+
+                                            <p class="text-muted">Malibu, California</p>
+
+                                            <hr>
+
+                                            <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+
+                                            <p class="text-muted">
+                                                <span class="tag tag-danger">UI Design</span>
+                                                <span class="tag tag-success">Coding</span>
+                                                <span class="tag tag-info">Javascript</span>
+                                                <span class="tag tag-warning">PHP</span>
+                                                <span class="tag tag-primary">Node.js</span>
+                                            </p>
+
+                                            <hr>
+
+                                            <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+
+                                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                elit. Etiam fermentum enim neque.</p>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-9">
+
+                                    <div class="content-wrapper">
+                                        <!-- Content Header (Page header) -->
+                                        <section class="content-header">
+                                            <div class="container-fluid">
+                                                <div class="row mb-2">
+                                                    <div class="col-sm-6">
+                                                        <h1>病历</h1>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <ol class="breadcrumb float-sm-right">
+                                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                                            <li class="breadcrumb-item active">Timeline</li>
+                                                        </ol>
+                                                    </div>
+                                                </div>
+                                            </div><!-- /.container-fluid -->
+                                        </section>
+
+                                        <!-- Main content -->
+                                        <section class="content">
+                                            <div class="container-fluid">
+
+                                                <!-- Timelime example  -->
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <!-- The time line -->
+                                                        <div class="timeline" th:each="case:${userCase}">
+                                                            <!-- timeline time label -->
+                                                            <div class="time-label">
+                                                                <span class="bg-red" th:text="${case.caseTime}"></span>
+                                                            </div>
+                                                            <!-- /.timeline-label -->
+                                                            <!-- timeline item -->
+                                                            <div>
+                                                                <i class="fas fa-envelope bg-blue"></i>
+                                                                <div class="timeline-item">
+                                                                        <span class="time"><i class="fas fa-clock"></i>
+                                                                            12:05</span>
+                                                                    <h3 class="timeline-header"><a href="#">Support
+                                                                        Team</a> sent you an email</h3>
+
+                                                                    <div class="timeline-body" th:text="${case.doctorDescription}">
+                                                                    </div>
+                                                                    <div class="timeline-footer">
+                                                                        <a class="btn btn-primary btn-sm">Read
+                                                                            more</a>
+                                                                        <a class="btn btn-danger btn-sm">Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- END timeline item -->
+
+                                                            <div>
+                                                                <i class="fas fa-clock bg-gray"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.col -->
+                                                </div>
+                                            </div>
+                                            <!-- /.timeline -->
+
+                                        </section>
+                                        <!-- /.content -->
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div><!-- /.container-fluid -->
+                    </section>
+                    <!-- /.content -->
+                    <!-- Main content -->
+                </div>
+            </div><!-- /.container-fluid -->
+
+        </div>
+    </div>
+
+    <div th:replace="~{common/footer::copy}"></div>
+</div>
+<!-- ./wrapper -->
+
+
+<div th:replace="common/footjs::common_js(~{::script})">
+    <!--每个页面自己的js-->
+    <!--<script src="js/index.js"></script>-->
+</div>
+</body>
+
+</html>

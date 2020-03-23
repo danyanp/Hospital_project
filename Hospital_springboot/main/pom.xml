@@ -1,93 +1,24 @@
-# Hospital_springBoot
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.5.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.hospital</groupId>
+    <artifactId>mian</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>mian</name>
+    <description>Demo project for Spring Boot</description>
 
-> 在线医院问诊系统
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
-
-
-## 1.项目开发简介
-
-#### 1.1框架简介
-
-##### 		采用springBoot框架
-
-##### 		采用maven构建项目
-
-##### 		采用IDEA开发工具		
-
-#### 1.2数据库设计简介
-
-#### 1.3实现功能简介
-
-- admin超级管理员
-  - [x] 增删改查 普通用户 医生
-  - [x] 管理系统
-- 普通用户
-  - [x] 登录
-  - [ ] 注册
-  - [x] 查询和修改个人信息 病例
-  - [ ] 查看就诊记录
-  - [ ] 与医生会话
-  - [ ] 按照疾病和相关描述检索医生信息
-  - [ ] 按科室分类显示医生信息
-  - [ ] 按照医院查询显示医生信息
-- 医生
-  - [ ] 查询和修改个人信息
-  - [ ] 与病人建立会话
-
-#### SQL语句
-
-- 查找所有分类
-
-```mysql
-SELECT COUNT(DISTINCT(CategoryName))
-FROM dis_category,disease
-WHERE dis_category.CategoryName IN(
-	SELECT dis_category.CategoryName
-	FROM disease,dis_category
-	WHERE disease.Dis_CategoryID = dis_category.Dis_CategoryID and DiseaseName != ""
-)
-```
-
-- 获取所有分类
-
-```sql
-
-
-
-```
-
-- 
-
-```sql
-UPDATE disease a,dis_category b
-SET a.Dis_CategoryID = b.Dis_CategoryID 
-WHERE b.CategoryName = a.Sub_Category
-```
-
-
-
-## 2.创建项目 
-
-#### 2.1配置文件目录
-
-- applicationContext.yaml
-
-#### 2.2配置
-
-- poe.xml
-  - junit用于测试
-  - junit-jupiter-api
-  - Spring容器
-  - mybatis
-  - mybatis-spring
-  - lombok
-  - jstl
-  - mysql-connector-java
-  - commons-dbcp
-  - javaeee-api
-
-```xml
-<dependencies>
+    <dependencies>
         <!--org.springframework.boot官方-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -177,23 +108,14 @@ WHERE b.CategoryName = a.Sub_Category
 
     </dependencies>
 
-```
 
-- applicationContext.yaml
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
-```yaml
-#端口
-server.port: 8081
-
-spring:
-  #连接数据库
-  datasource:
-    username: root
-    password: root
-    url: jdbc:mysql://127.0.0.1:3306/doctor?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  #thymeleaf模板引擎
-  thymeleaf:
-    cache: false
-```
-
+</project>
